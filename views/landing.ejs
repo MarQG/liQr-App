@@ -1,0 +1,14 @@
+<% include partials/header.ejs%>
+
+<div>
+    <h1>
+        Candy is Dandy but liQr is quicker.
+    </h1>
+    <ul>
+        <% text.forEach(function(text) {%>
+            <li><%= text%></li>
+        <%});%>
+    </ul>
+</div>
+    
+<% include partials/footer.ejs %>
