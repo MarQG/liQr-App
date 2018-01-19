@@ -45,12 +45,15 @@ app.get("/",(req, res)=>{
 // ===== ROUTES ======
 
 // ===== Auth ======
-require('./routes/auth-routes')(app, passport);
+require('./routes/auth-routes.js')(app, passport);
 // Load Passport Strategies
 require('./config/passport/passport.js')(passport, db.users);
 
 // ===== Drinks ======
-require('./routes/drinks-routes')(app);
+require('./routes/drinks-routes.js')(app);
+
+// ===== APIs ======
+require('./routes/api-routes.js')(app);
 
 // Server Listen Setup
 db.sequelize.sync({ force: true }).then(() => {
