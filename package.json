@@ -19,11 +19,13 @@
         "express-session": "^1.15.5",
         "method-override": "^2.3.9",
         "mongoose": "^4.10.8",
+        "mysql": "^2.15.0",
         "mysql2": "^1.5.1",
         "passport": "^0.4.0",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^4.1.0",
         "semantic-ui": "^2.2.13",
-        "sequelize": "^4.31.2"
+        "sequelize": "^3.31.1",
+        "sequelize-cli": "^3.2.0"
     }
 }
