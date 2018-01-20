@@ -1,6 +1,3 @@
-
-const db = require('../models');
-
 // Requires
 // require the models as a db variable
 const db = require('../models');

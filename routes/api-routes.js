@@ -10,19 +10,21 @@ const apiController = require('../controllers/apiContoller.js');
  module.exports = (app) => {
      app.get('/api/drinks', apiController.apiDrinks);
 
-     app.post('/api/drinks', apiController.apiDrinks);
+     app.get('/api/drinks/:id', apiController.getDrink);
 
-     app.put('/api/drinks', apiController.apiDrinks);
+     app.post('/api/drinks', apiController.newDrink);
 
-     app.get('/api/drinks', apiController.apiDrinks);
+     app.put('/api/drinks/:id', apiController.editDrink);
 
-     app.delete('/api/comments', apiController.apiDrinks);
+     app.delete('/api/drinks/:id', apiController.deleteDrink);
 
-     app.post('/api/comments', apiController.apiDrinks);
+    //  app.get('/api/comments', apiController.apiDrinks);
 
-     app.put('/api/comments', apiController.apiDrinks);
+    //  app.post('/api/comments', apiController.apiDrinks);
 
-     app.delete('/api/comments', apiController.apiDrinks);
+    //  app.put('/api/comments', apiController.apiDrinks);
+
+    //  app.delete('/api/comments', apiController.apiDrinks);
 
   	
  }

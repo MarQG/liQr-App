@@ -48,12 +48,14 @@ module.exports = {
             description: req.body.description,
             image_link: req.body.imageLink
         },{
-
+            where:{
+                id: req.params.id
+            }
         }).then((results) => {
             res.json(results);
         });
     },
-    deleteDrinks: (req, res) => {
+    deleteDrink: (req, res) => {
         db.drinks.destroy({
             where: {
                 id: req.params.id
