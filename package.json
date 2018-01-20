@@ -23,6 +23,7 @@
         "passport": "^0.4.0",
         "passport-local": "^1.0.0",
         "passport-local-mongoose": "^4.1.0",
+        "semantic-ui": "^2.2.13",
         "sequelize": "^4.31.2"
     }
 }
