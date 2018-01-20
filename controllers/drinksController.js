@@ -1,7 +1,10 @@
-
+// Requires
+// require the models as a db variable
 
 module.exports = {
     drinks: (req, res) => {
+        //call db.drinks.findAll() and render the page while passing in the data
+        // res.render( args1, args2)
         res.render('drinks/index');
     },
     // newDrink
