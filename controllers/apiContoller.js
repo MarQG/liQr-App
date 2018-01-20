@@ -10,6 +10,7 @@ const db = require('../models');
 
 // Exports
 module.exports = {
+    // Drinks API
     apiDrinks: (req, res) => {
         db.drinks.findAll({}).then((drinks) => {
             if(!drinks){
@@ -18,5 +19,7 @@ module.exports = {
             console.log(drinks);
             res.json(drinks);
         });
-    }
+    },
+
+    // Comments API
 }
