@@ -25,6 +25,6 @@ const apiController = require('../controllers/apiContoller.js');
      app.delete('/api/comments', apiController.apiDrinks);
 
   	
- }
+ };
 
  

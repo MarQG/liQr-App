@@ -11,7 +11,7 @@ const db = require('../models');
 // Exports
 module.exports = {
     // Drinks API
-    apiDrinks: (req, res) => {
+    getAllDrinks: (req, res) => {
         db.drinks.findAll({}).then((drinks) => {
             if(!drinks){
                 res.status(404).end();
@@ -22,4 +22,13 @@ module.exports = {
     },
 
     // Comments API
-}
+    getAllComments: (req, res) => {
+        db.comments.findAll({}).then((comments) =>{
+            if(!comments){
+                res.status(404).end();
+            }
+            console.log(comments);
+            res.json(comments);
+        });
+    },
+};
