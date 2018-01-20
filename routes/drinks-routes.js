@@ -11,9 +11,12 @@ module.exports = (app) => {
     app.get('/drinks', auth.isLoggedIn, drinksController.drinks);
       
     // drinks/new
+    app.get('/drinks/newdrink', auth.isLoggedIn, drinksController.updateDrink);
 
     // drinks/edit
+    app.get('drinks/editdrink', auth.isLoggedIn, drinksController.newDrink);
 
     // drinks/show
+    app.get('/drinks/showdrink', auth.isLoggedIn, drinksController.showDrinks);
 
-}
+};
