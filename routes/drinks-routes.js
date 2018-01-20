@@ -8,15 +8,17 @@ const auth = require('../middleware/auth');
 // updateDrink should do the drinks/newdrink
 // showDrinks should show the drinks/showdrink
 module.exports = (app) => {
-    app.get('/drinks', auth.isLoggedIn, drinksController.drinks);
+    app.get('/drinks', drinksController.drinks);
       
     // drinks/new
-    app.get('/drinks/newdrink', auth.isLoggedIn, drinksController.updateDrink);
+    app.get('/drinks/newdrink', drinksController.updateDrink);
 
     // drinks/edit
-    app.get('drinks/editdrink', auth.isLoggedIn, drinksController.newDrink);
+    app.get('drinks/editdrink', drinksController.newDrink);
 
     // drinks/show
-    app.get('/drinks/showdrink', auth.isLoggedIn, drinksController.showDrinks);
+    app.get('/drinks/showdrink', drinksController.showDrinks);
 
 };
+
+
