@@ -35,9 +35,15 @@ app.use(passport.session());
 // ===== TEST ROUTES ======
 app.get("/",(req, res)=>{
     let testText = [
-        '1',
-        '2',
-        '3'
+        {
+            name: 'Ferenc'
+        },
+        {
+            name: "Collin"
+        },
+        {
+            name: "Mel"
+        }
     ]
     res.render('landing', { text: testText });
 });
