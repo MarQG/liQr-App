@@ -11,13 +11,13 @@ module.exports = (app) => {
     app.get('/drinks', drinksController.drinks);
       
     // drinks/new
-    app.get('/drinks/newdrink', drinksController.updateDrink);
+    app.get('/drinks/new', drinksController.updateDrink);
 
     // drinks/edit
-    app.get('drinks/editdrink', drinksController.newDrink);
+    app.get('drinks/edit', drinksController.newDrink);
 
     // drinks/show
-    app.get('/drinks/showdrink', drinksController.showDrinks);
+    app.get('/drinks/:id', drinksController.showDrink);
 
 };
 

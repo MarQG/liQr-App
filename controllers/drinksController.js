@@ -7,24 +7,30 @@ module.exports = {
     drinks: (req, res) => {
         //call db.drinks.findAll() and render the page while passing in the data
         // res.render( args1, args2)
-
         db.drinks.findAll({}).then((results) => {
             console.log(results[0].drink_name);
             res.render('drinks/index', { drinks: results });
         });
-       
-
     },
     // newDrink
     newDrink: (req, res) => {
-    	res.render('drinks/editdrink');
+    	res.render('drinks/newdrink');
     },
     // updateDrink
     updateDrink: (req, res) => {
-    	res.render('drinks/newdrink');
+    	res.render('drinks/editdrink');
     },
     // showDrinks
-    showDrinks: (req, res) => {
-    	res.render('drinks/showdrink');
+    showDrink: (req, res) => {
+        db.drinks.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.comments, db.ratings]
+        }).then((result) => {
+            console.log(result);
+            res.render('drinks/showdrink');
+        });
+    	
     }
 }

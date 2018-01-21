@@ -62,7 +62,7 @@ require('./routes/drinks-routes.js')(app);
 require('./routes/api-routes.js')(app);
 
 // Server Listen Setup
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ }).then(() => {
     app.listen(port, () =>{
         console.log("Server listening on port: " + port);
     });
