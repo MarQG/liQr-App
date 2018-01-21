@@ -8,15 +8,15 @@ const apiController = require('../controllers/apiContoller.js');
 
 // Exports
  module.exports = (app) => {
-     app.get('/api/drinks', apiController.apiDrinks);
+     app.get('/api/drinks', apiController.getAllDrinks);
 
      app.get('/api/drinks/:id', apiController.getDrink);
 
-     app.post('/api/drinks', apiController.newDrink);
+     app.post('/api/drinks/', apiController.newDrink);
 
-     app.put('/api/drinks/:id', apiController.editDrink);
+     app.put('/api/drinks/:id/', apiController.editDrink);
 
-     app.delete('/api/drinks/:id', apiController.deleteDrink);
+     app.delete('/api/drinks/:id/', apiController.deleteDrink);
 
     //  app.get('/api/comments', apiController.apiDrinks);
 
@@ -27,6 +27,6 @@ const apiController = require('../controllers/apiContoller.js');
     //  app.delete('/api/comments', apiController.apiDrinks);
 
   	
- }
+ };
 
  

@@ -11,7 +11,7 @@ const db = require('../models');
 // Exports
 module.exports = {
     // Drinks API
-    apiDrinks: (req, res) => {
+    getAllDrinks: (req, res) => {
         db.drinks.findAll({}).then((drinks) => {
             if(!drinks.length === 0){
                 res.status(404).end();
@@ -64,5 +64,65 @@ module.exports = {
             res.json(results);
         });
     },
+
+
     // Comments API
-}
+    getAllComments: (req, res) => {
+        db.comments.findAll({}).then((comments) =>{
+            if(!comments){
+                res.status(404).end();
+            }
+            console.log(comments);
+            res.json(comments);
+        });
+    },
+
+    getComment: (req, res) => {
+        db.comments.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then((comment) => {
+            if(!comment === 0) {
+                res.status(404).end();
+            }
+            console.log(comment);
+            res.json(comment);
+        });
+    },
+
+    newComment: (req, res) => {
+        db.comments.create({
+            comment_name: req.body.name,
+            description: req.body.description,
+            image_link: req.body.imageLink
+        }).then((results) => {
+            res.json(results);
+        });
+    },
+
+    editComment: (req, res) => {
+        db.comments.update({
+            comment_name: req.body.name,
+            description: req.body.description,
+            image_link: req.body.imagLink
+        }, {
+            where:{
+                id: req.params.id
+            }
+        }).then((results) => {
+            res.json(results);
+        });
+    },
+
+    deleteComment: (req, res) => {
+        db.comments.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then((results) => {
+            res.json(results);
+        });
+    },
+};
+

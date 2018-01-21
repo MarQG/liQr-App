@@ -1,0 +1,26 @@
+[
+	{
+		"id" : 1,
+		"username" : "Ferenc Gutierrez",
+		"first_name" : "Ferenc",
+		"last_name" : "Gutierrez",
+		"email" : "ferenc.g87@gmail.com",
+		"password" : "$2a$08$sWZt3NsAmQsKmABPrRAChO41DKN3cB47rb6qYChvZjhHja2Ol50Hm",
+		"last_login" : null,
+		"status" : "active",
+		"createdAt" : "2018-01-21 15:51:22",
+		"updatedAt" : "2018-01-21 15:51:22"
+	},
+	{
+		"id" : 2,
+		"username" : "Collin Cavallo",
+		"first_name" : "Collin",
+		"last_name" : "Cavallo",
+		"email" : "collin@gmail.com",
+		"password" : "$2a$08$sWZt3NsAmQsKmABPrRAChO41DKN3cB47rb6qYChvZjhHja2Ol50Hm",
+		"last_login" : null,
+		"status" : "active",
+		"createdAt" : "2018-01-21 15:51:22",
+		"updatedAt" : "2018-01-21 15:51:22"
+	}
+]

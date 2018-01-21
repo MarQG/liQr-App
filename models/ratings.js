@@ -7,8 +7,9 @@
 module.exports = (sequelize, DataTypes) => {
     const Ratings = sequelize.define('ratings', {
         rating: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.BOOLEAN,
+            default: false,
+
         }
     });
 
