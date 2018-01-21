@@ -11,10 +11,10 @@ module.exports = (app) => {
     app.get('/drinks', drinksController.drinks);
       
     // drinks/new
-    app.get('/drinks/new', drinksController.updateDrink);
+    app.get('/drinks/new', drinksController.newDrink);
 
     // drinks/edit
-    app.get('drinks/edit', drinksController.newDrink);
+    app.get('drinks/edit', drinksController.updateDrink);
 
     // drinks/show
     app.get('/drinks/:id', drinksController.showDrink);

@@ -32,7 +32,7 @@ module.exports = {
             include: [db.comments, db.ratings]
         }).then((result) => {
             console.log(result);
-            res.render('drinks/showdrink');
+            res.render('drinks/showdrink', {drink:result});
         });
     	
     }

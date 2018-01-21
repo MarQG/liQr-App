@@ -1,0 +1,27 @@
+<p><%= drink.drink_name %></p>
+<p><%= drink.description %></p>
+<p><%= drink.image_link %></p>
+<% drink.comments.forEach(function(comment){ %>
+    <p>
+        <%= comment.comment %>
+    </p>
+<% }) %>
+<% var ratingCount =[];%>
+<% var ratingFor = [];%>
+<% drink.ratings.forEach(function(rating){ %>
+    <%  ratingCount.push(rating.rating); %>
+    
+    <% if(rating.rating === true) { %>
+        <% ratingFor.push(rating.rating); %>
+    <% } %>
+
+<% }) %>
+<p>
+
+    Total Ratings: <%= ratingCount.length %>
+
+</p>
+
+<p>
+    Rating:  <%= ratingFor.length %>
+</p>
