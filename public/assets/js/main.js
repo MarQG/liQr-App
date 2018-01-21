@@ -1,6 +1,26 @@
 $('document').ready(function(){
     console.log('main.js connected');
+    $('.img').hide()
+    $('.img').transition('jiggle');
+    $('.drinkName').transition('jiggle');
+    
     
     $('#test').on('click',function () {$('.ui.sidebar.inverted').sidebar('toggle')}) 
+
+    $('#newDrinkForm').form({
+        fields: {
+
+        },
+        onSuccess: function(e) {
+            $.post('/api/drinks', {  
+                    name: $('#drink_name_form').val().trim(),
+                    description: $('#drink_desc_form').val().trim(),
+                    imageLink: $('#drink_img_form').val().trim()               
+            }).then(function(){
+                window.location.href('/drinks')
+            })
+        }
+    })
+    
 
 });

@@ -1,13 +1,24 @@
 
-<% include ../partials/header.ejs %>
-
+<% include ../partials/indexHeader.ejs %>
+<div class="ui horizontal divider">
 <div class="landing-div">
         <% drinks.forEach(function(drink){ %>
-            <p>
+            <a href="drink/<%= drink.id %>"><div class="drinkContainer">
+                <h1 class="drinkName"><%= drink.drink_name %></h1>
+                <img src='<%= drink.image_link%>' alt="drink name" class="img">
+                <p><%= drink.description %></p>
+        <hr>
+
+
+
+            <!-- <p>
                 <%= drink.id %>
                 <%= drink.drink_name %>
-            </p>
+            </p> -->
         <% }); %>
+</div></a>
+</div>
+
 </div>
     
 <% include ../partials/footer.ejs %>

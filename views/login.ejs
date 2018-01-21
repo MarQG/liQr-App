@@ -1,15 +1,33 @@
 <% include partials/header.ejs%>
 
-<div>
-    <h1>Login</h1>
-    <form id="signin" name="signin" method="post" action="/login">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign In" />
-    </form>
- 
+<div class="ui two column middle aligned very relaxed stackable grid">
+    <div class="column">
+        <div class="ui form">
+            <div class="field">
+                <label>Username</label>
+                <div class="ui left icon input">
+                    <input type="text" placeholder="Username">
+                    <i class="user icon"></i>
+                </div>
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <div class="ui left icon input">
+                    <input type="password">
+                    <i class="lock icon"></i>
+                </div>
+            </div>
+            <div class="ui blue submit button">Login</div>
+        </div>
+    </div>
+    <div class="ui vertical divider">
+        Or
+    </div>
+    <div class="center aligned column">
+        <div class="ui big green labeled icon button">
+            <i class="signup icon"></i>
+            Sign Up
+        </div>
+    </div>
 </div>
-    
 <% include partials/footer.ejs %>
