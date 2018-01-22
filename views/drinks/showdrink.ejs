@@ -1,27 +1,31 @@
-<p><%= drink.drink_name %></p>
-<p><%= drink.description %></p>
-<p><%= drink.image_link %></p>
-<% drink.comments.forEach(function(comment){ %>
-    <p>
-        <%= comment.comment %>
-    </p>
-<% }) %>
+<% include ../partials/header.ejs %>
+<div>
+<h1><%= drink.drink_name %></h1>
+<h3><%= drink.description %></h3>
+<img src="<%= drink.image_link %>">
+<div class="commentsDiv">
+    <h2>Comments</h2>
+   <% drink.comments.forEach(function(comment){ %>
+    <p><%= comment.comment %></p>
+<% }) %> 
+</div>
+<div class="raitingDiv">
 <% var ratingCount =[];%>
 <% var ratingFor = [];%>
 <% drink.ratings.forEach(function(rating){ %>
     <%  ratingCount.push(rating.rating); %>
-    
-    <% if(rating.rating === true) { %>
+        <% if(rating.rating === true) { %>
         <% ratingFor.push(rating.rating); %>
     <% } %>
-
 <% }) %>
-<p>
+<h2>Ratings</h2>
+<p>Total Ratings: <%= ratingCount.length %></p>
 
-    Total Ratings: <%= ratingCount.length %>
+<p>Rating:  <%= ratingFor.length %></p>
+</div>
 
-</p>
 
-<p>
-    Rating:  <%= ratingFor.length %>
-</p>
+</div>
+
+
+<% include ../partials/footer.ejs %>
