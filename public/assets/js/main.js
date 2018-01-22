@@ -1,5 +1,6 @@
 $('document').ready(function(){
     console.log('main.js connected');
+    $('#commentForm').hide();
     $('.img').hide()
     $('.img').transition('jiggle');
     $('.drinkName').transition('jiggle');
@@ -20,6 +21,12 @@ $('document').ready(function(){
                 window.location.href('/drinks')
             })
         }
+    })
+
+    $('#addComment').on('click',function() {
+        $('#commentForm').show()
+        $('#addComment').hide();
+
     })
     
 
