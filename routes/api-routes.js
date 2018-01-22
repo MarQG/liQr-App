@@ -8,6 +8,9 @@ const apiController = require('../controllers/apiContoller.js');
 
 // Exports
  module.exports = (app) => {
+    // User Info
+    app.get('/api/user_data', apiController.getUser);
+    // Drinks
      app.get('/api/drinks', apiController.getAllDrinks);
 
      app.get('/api/drinks/:id', apiController.getDrink);
@@ -18,13 +21,16 @@ const apiController = require('../controllers/apiContoller.js');
 
      app.delete('/api/drinks/:id/', apiController.deleteDrink);
 
-    //  app.get('/api/comments', apiController.apiDrinks);
+     // Comments
+     app.get('/api/comments', apiController.getAllComments);
 
-    //  app.post('/api/comments', apiController.apiDrinks);
+     app.get('/api/comments/:id', apiController.getComment);
 
-    //  app.put('/api/comments', apiController.apiDrinks);
+     app.post('/api/comments', apiController.newComment);
 
-    //  app.delete('/api/comments', apiController.apiDrinks);
+     app.put('/api/comments/:id', apiController.editComment);
+
+     app.delete('/api/comments/:id', apiController.deleteComment);
 
   	
  };

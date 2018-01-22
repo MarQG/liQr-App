@@ -10,6 +10,20 @@ const db = require('../models');
 
 // Exports
 module.exports = {
+    // User 
+    getUser: (req, res) => {
+
+        if (req.user === undefined) {
+            // The user is not logged in
+            res.json({});
+        } else {
+            res.json({
+                userId: req.user.id,
+                username: req.user.username
+            });
+        }
+    },
+
     // Drinks API
     getAllDrinks: (req, res) => {
         db.drinks.findAll({}).then((drinks) => {
@@ -93,9 +107,9 @@ module.exports = {
 
     newComment: (req, res) => {
         db.comments.create({
-            comment_name: req.body.name,
-            description: req.body.description,
-            image_link: req.body.imageLink
+            comment: req.body.comment,
+            drinkId: req.body.drinkId,
+            userId: req.body.userId
         }).then((results) => {
             res.json(results);
         });
@@ -103,9 +117,9 @@ module.exports = {
 
     editComment: (req, res) => {
         db.comments.update({
-            comment_name: req.body.name,
-            description: req.body.description,
-            image_link: req.body.imagLink
+            comment: req.body.comment,
+            drinkId: req.body.drinkId,
+            userId: req.body.userId
         }, {
             where:{
                 id: req.params.id

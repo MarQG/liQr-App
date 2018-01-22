@@ -9,6 +9,10 @@ const app = express();
 const db = require('./models');
 const env = require('dotenv');
 
+// Routes Requires
+const drinkRoutes = require('./routes/drinks-routes.js');
+const commentsRoutes = require('./routes/comments-routes');
+
 // Config Variables
 const publicPath = path.join(__dirname, '/public');
 const port = process.env.PORT || 3000;
@@ -56,10 +60,19 @@ require('./routes/auth-routes.js')(app, passport);
 require('./config/passport/passport.js')(passport, db.users);
 
 // ===== Drinks ======
-require('./routes/drinks-routes.js')(app);
+app.use("/drinks", drinkRoutes);
+
+// ======= Comments =======
+app.use('/drinks/:id/comments', commentsRoutes );
+
 
 // ===== APIs ======
 require('./routes/api-routes.js')(app);
+
+
+app.get('*', function(req, res){
+    res.status(404).render('notfound');
+  });
 
 // Server Listen Setup
 db.sequelize.sync({ }).then(() => {
