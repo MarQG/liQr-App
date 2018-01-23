@@ -11,7 +11,7 @@ const router = express.Router();
 // showDrinks should show the drinks/showdrink
 
 router.get('/', drinksController.drinks);
-    
+
 // drinks/new
 router.get('/new', drinksController.newDrink);
 
@@ -22,7 +22,3 @@ router.get('/:id/edit', drinksController.updateDrink);
 router.get('/:id', drinksController.showDrink);
 
 module.exports = router;
-
-
-
-
