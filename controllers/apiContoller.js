@@ -151,8 +151,8 @@ module.exports = {
     getRating: (req, res) => {
         db.ratings.findOne({
             where: {
-                userId: req.body.userId,
-                drinkId: req.body.drinkId
+                userId: req.params.user_id,
+                drinkId: req.params.drink_id
             }
         }).then((ratings) => {
             if (!ratings && typeof ratings === "object") {
