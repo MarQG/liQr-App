@@ -13,10 +13,10 @@ const router = express.Router();
 router.get('/', auth.isLoggedIn, drinksController.drinks);
 
 // drinks/new
-router.get('/new', auth.isLoggedIn, drinksController.newDrink);
+router.get('/new',auth.isLoggedIn, drinksController.newDrink);
 
 // drinks/edit
-router.get('/:id/edit', auth.isLoggedIn, drinksController.updateDrink);
+router.get('/:id/edit',auth.isLoggedIn, drinksController.updateDrink);
 
 // drinks/show
 router.get('/:id', auth.isLoggedIn, drinksController.showDrink);
