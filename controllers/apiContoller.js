@@ -151,12 +151,12 @@ module.exports = {
     getRating: (req, res) => {
         db.ratings.findOne({
             where: {
-                userId: req.body.userId,
-                drinkId: req.body.drinkId
+                userId: req.params.user_id,
+                drinkId: req.params.drink_id
             }
         }).then((ratings) => {
-            if(!ratings === 0) {
-                res.status(404).end();
+            if (!ratings && typeof ratings === "object") {
+                res.status(404).send('not found').end();
             }
             console.log(ratings);
             res.json(ratings);

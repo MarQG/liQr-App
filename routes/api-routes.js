@@ -35,7 +35,7 @@ const apiController = require('../controllers/apiContoller.js');
   	// Ratings
     app.get('/api/ratings', apiController.getAllRatings);
 
-    app.get('/api/rating/', apiController.getRating);
+    app.get('/api/rating/:drink_id/:user_id', apiController.getRating);
 
     app.post('/api/ratings', apiController.newRating);
 
