@@ -9,15 +9,36 @@ $('document').ready(function(){
     $('#test').on('click',function () {$('.ui.sidebar.inverted').sidebar('toggle')}) 
 
     $('#loginForm').form({
+        fields:{
+            email: {
+                rules:[
+                    {
+                        type: 'email',
+                        message: 'Not a valid email. Please enter a valid email address.'
+                    }
+                ]
+                
+            },
+            password: {
+                rules:[
+                    {
+                        type: 'empty',
+                        message: 'Password cannot be empty.'
+                    }
+                ]
+                
+            }
+        },
         onSuccess: function(e) {
-            // e.preventDefault();
-            console.log('sucess ran')
+            e.preventDefault();
+            console.log('success ran');
             $.post('/login', {
                 email: $('#emailForm').val().trim(),
                 password: $('#passwordForm').val().trim()
             }).then(function() {
+                window.location = "/drinks/";
                 console.log('form Submitted');
-            })
+            });
         }
     })
 
@@ -26,7 +47,6 @@ $('document').ready(function(){
 
         },
         onSuccess: function (e) {
-            e.preventDefault()
             var id = $('#newCommentForm').attr('data-dataid');
             console.log(id)
             $.get('/api/user_data').then(function (user) {
