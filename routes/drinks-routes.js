@@ -24,9 +24,5 @@ router.get('/:id', drinksController.showDrink);
 module.exports = router;
 
 
-<<<<<<< HEAD
-};
-=======
 
 
->>>>>>> a6d6b466697bc8c856317ed583474c061dfb50d1

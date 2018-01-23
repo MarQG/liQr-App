@@ -1,13 +1,8 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "silence1",
-    "port":"3306",
-=======
     "password": "root",
     "port":"8889",
->>>>>>> a6d6b466697bc8c856317ed583474c061dfb50d1
     "database": "liqr_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
