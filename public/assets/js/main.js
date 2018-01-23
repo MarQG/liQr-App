@@ -26,14 +26,16 @@ $('document').ready(function(){
 
         },
         onSuccess: function (e) {
-            var url_array = window.location.split('/')
-            var id = url_array[url_array.length - 1];
             e.preventDefault()
+            var id = $('#newCommentForm').attr('data-dataid');
+            console.log(id)
             $.get('/api/user_data').then(function (user) {
                 $.post('/api/comments', {
                     userId: user.userId,
                     comment: $('#commentText').val().trim(),
                     drinkId: id
+                }).then(function () {
+                    location.reload();
                 })
             })
         }
