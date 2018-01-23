@@ -37,7 +37,7 @@ const apiController = require('../controllers/apiContoller.js');
 
     app.get('/api/ratings/:id', apiController.getRating);
 
-    app.post('/p/ratings', apiController.newRating);
+    app.post('/api/ratings', apiController.newRating);
 
     app.put('/api/ratings', apiController.editRating);
 
