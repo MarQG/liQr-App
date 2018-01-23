@@ -32,7 +32,17 @@ const apiController = require('../controllers/apiContoller.js');
 
      app.delete('/api/comments/:id', apiController.deleteComment);
 
-  	
+  	// Ratings
+    app.get('/api/ratings', apiController.getAllRatings);
+
+    api.get('/api/ratings/:id', apiController.getRating);
+
+    api.post('/api/ratings', apiController.newRating);
+
+    api.put('/api/ratings', apiController.editRating);
+
+    api.delete('/api/ratings/:id', apiControler.deleteRating);
+    
  };
 
  
