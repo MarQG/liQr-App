@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>liQr</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/main.css" />
+</head>
+
+<body>
+    <div class="ui menu">
+        <div class="header item">
+            liQr
+        </div>
+        <a class="item" id="test">
+            Menu
+        </a>
+    </div>
+    <div class="landing-div">
+
+        <body>
+            <div class="ui sidebar inverted vertical menu">
+                <% var randNum = Math.floor(Math.random() * drinks.length)%>
+                    <%= console.log(randNum)%>
+                        <a href="drinks/<%= randNum + 1%>" class="item">
+                            Random Drink
+                        </a>
+                        <a href="/drinks/new" class="item">
+                            Add new Drink
+                        </a>
+                        <a href='/login' class="item">
+                            Login/Logout
+                        </a>
+            </div>
+            <div class="pusher">
+                <!-- Site content !-->
+            </div>
+        </body>
+    </div>

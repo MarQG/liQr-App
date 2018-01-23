@@ -1,5 +1,21 @@
 <% include ../partials/header.ejs %>
-
-
-
+<div class="ui horizontal divider">
+    <h1>Add A Drink</h1>
+    <form id="newDrinkForm" action="/drinks">
+    <div class="ui inverted segment">
+        
+        <div class="ui inverted fluid input">
+            <input type="text" placeholder="Drink Name" id="drink_name_form" name="name">
+        </div>
+        <div class="ui inverted divider"></div>
+        <div class="ui inverted fluid input">
+            <input type="text" placeholder="Drink Description" id="drink_desc_form" name="description">
+        </div>
+        <div class="ui inverted divider"></div>
+        <div class="ui inverted fluid input">
+            <input type="text" placeholder="Image (Link)" id="drink_img_form" name="imageLink">
+        </div>
+        <button id='submitButton' type="submit" class="ui button">Submit</button>
+        </form>
+        </div>
 <% include ../partials/footer.ejs %>
