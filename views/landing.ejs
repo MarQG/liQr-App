@@ -1,14 +1,12 @@
-<% include partials/header.ejs%>
+<% include partials/headerlanding.ejs %>
 
-<div>
-    <h1>
-        Candy is Dandy but liQr is quicker.
+<div class="landing-div">
+    <h1 class header-text>
+        Candy is Dandy but <em class="logo">liQr</em> is quicker.
     </h1>
-    <ul>
-        <% text.forEach(function(text) {%>
-            <li><%= text%></li>
-        <%});%>
-    </ul>
+    <button class="ui primary button">
+        <a href="/drinks">Enter</a>
+      </button>
 </div>
     
 <% include partials/footer.ejs %>
