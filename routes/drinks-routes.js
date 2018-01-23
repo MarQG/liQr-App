@@ -10,15 +10,15 @@ const router = express.Router();
 // updateDrink should do the drinks/newdrink
 // showDrinks should show the drinks/showdrink
 
-router.get('/', drinksController.drinks);
+router.get('/', auth.isLoggedIn, drinksController.drinks);
 
 // drinks/new
-router.get('/new', drinksController.newDrink);
+router.get('/new', auth.isLoggedIn, drinksController.newDrink);
 
 // drinks/edit
-router.get('/:id/edit', drinksController.updateDrink);
+router.get('/:id/edit', auth.isLoggedIn, drinksController.updateDrink);
 
 // drinks/show
-router.get('/:id', drinksController.showDrink);
+router.get('/:id', auth.isLoggedIn, drinksController.showDrink);
 
 module.exports = router;

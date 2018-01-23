@@ -26,7 +26,7 @@ $('document').ready(function(){
 
         },
         onSuccess: function (e) {
-            var url_array = document.location.split('/');
+            var url_array = window.location.split('/')
             var id = url_array[url_array.length - 1];
             e.preventDefault()
             $.get('/api/user_data').then(function (user) {
