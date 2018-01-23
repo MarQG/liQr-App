@@ -1,5 +1,5 @@
 // ===== API CONTROLLER ======
-/* 
+/*
     This controllers and manages all API
     calls to the server. Each section will
     serve up the relevant data from the database
@@ -10,7 +10,7 @@ const db = require('../models');
 
 // Exports
 module.exports = {
-    // User 
+    // User
     getUser: (req, res) => {
 
         if (req.user === undefined) {
@@ -138,5 +138,64 @@ module.exports = {
             res.json(results);
         });
     },
+    getAllRatings: (req, res) => {
+        db.ratings.findAll({}).then((ratings) =>{
+            if(!ratings){
+                res.status(404).end();
+            }
+            console.log(ratings);
+            res.json(ratings);
+        });
+    },
+    
+    getRating: (req, res) => {
+        db.ratings.findOne({
+            where: {
+                userId: req.body.userId,
+                drinkId: req.body.drinkId
+            }
+        }).then((ratings) => {
+            if(!ratings === 0) {
+                res.status(404).end();
+            }
+            console.log(ratings);
+            res.json(ratings);
+        });
+    },
+    
+    newRating: (req, res) => {
+        db.ratings.create({
+            rating: req.body.rating,
+            userId: req.body.userId,
+            drinkId: req.body.drinkId
+        }).then((results) => {
+            res.json(results);
+        });
+    },
+    editRating: (req, res) => {
+        db.ratings.update({
+            rating: req.body.rating,
+            userId: req.body.userId,
+            drinkId: req.body.drinkId
+        },{
+            where:{
+                id: req.body.ratingId
+            }
+        }).then((results) => {
+            res.json(results);
+        });
+    },
+    deleteRating: (req, res) => {
+        db.ratings.destroy({
+            where: {
+                id: req.body.ratingId
+            }
+        }).then((results)=> {
+            res.json(results);
+        });
+    }
+    
+
+
 };
 
