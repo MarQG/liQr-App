@@ -138,6 +138,8 @@ module.exports = {
             res.json(results);
         });
     },
+
+
 };
 
 getAllRatings: (req, res) => {
@@ -153,7 +155,8 @@ getAllRatings: (req, res) => {
 getRating: (req, res) => {
     db.ratings.findOne({
         where: {
-            id: req.params.id
+            userId: req.body.userId,
+            drinkId: req.body.drinkId
         }
     }).then((ratings) => {
         if(!ratings === 0) {
@@ -166,21 +169,21 @@ getRating: (req, res) => {
 
 newRating: (req, res) => {
     db.ratings.create({
-        drink_name: req.body.name,
-        description: req.body.description,
-        image_link: req.body.imageLink
+        rating: req.body.rating,
+        userId: req.body.userId,
+        drinkId: req.body.drinkId
     }).then((results) => {
         res.json(results);
     });
 },
 editRating: (req, res) => {
     db.ratings.update({
-        drink_name: req.body.name,
-        description: req.body.description,
-        image_link: req.body.imageLink
+        rating: req.body.rating,
+        userId: req.body.userId,
+        drinkId: req.body.drinkId
     },{
         where:{
-            id: req.params.id
+            id: req.body.ratingId
         }
     }).then((results) => {
         res.json(results);
@@ -189,7 +192,7 @@ editRating: (req, res) => {
 deleteRating: (req, res) => {
     db.ratings.destroy({
         where: {
-            id: req.params.id
+            id: req.body.ratingId
         }
     }).then((results)=> {
         res.json(results);
