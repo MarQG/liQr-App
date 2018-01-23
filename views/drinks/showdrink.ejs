@@ -6,7 +6,7 @@
 <div class="commentsDiv">
     <h2>Comments</h2>
    <% drink.comments.forEach(function(comment){ %>
-    <p><%= comment.comment %></p>
+    <h4><%= comment.comment %></h4>
 <% }) %> 
 <a href="#"><button id='addComment' class="ui button">Add Comment</button></a>
 <div id='commentForm'class="ui form">
@@ -28,8 +28,8 @@
     <% } %>
 <% }) %>
 <h2>Ratings</h2>
-<a href="#"><i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i></a>
-<a href="#"><i class="fa fa-thumbs-down fa-3x" aria-hidden="true"></i></a>
+<a href="#" id="upVote"><i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i></a>
+<a href="#" id="downVote"><i class="fa fa-thumbs-down fa-3x" aria-hidden="true"></i></a>
 
 <p>Total Ratings: <%= ratingCount.length %></p>
 

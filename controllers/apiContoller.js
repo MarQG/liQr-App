@@ -155,8 +155,8 @@ module.exports = {
                 drinkId: req.body.drinkId
             }
         }).then((ratings) => {
-            if(!ratings === 0) {
-                res.status(404).end();
+            if (!ratings && typeof ratings === "object") {
+                res.status(404).send('not found').end();
             }
             console.log(ratings);
             res.json(ratings);
