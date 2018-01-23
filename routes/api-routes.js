@@ -35,11 +35,11 @@ const apiController = require('../controllers/apiContoller.js');
   	// Ratings
     app.get('/api/ratings', apiController.getAllRatings);
 
-    app.get('/api/ratings/:id', apiController.getRating);
+    app.get('/api/rating/', apiController.getRating);
 
     app.post('/api/ratings', apiController.newRating);
 
-    app.put('/api/ratings', apiController.editRating);
+    app.put('/api/ratings/:id', apiController.editRating);
 
     app.delete('/api/ratings/:id', apiController.deleteRating);
     
