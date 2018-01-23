@@ -9,10 +9,6 @@ const app = express();
 const db = require('./models');
 const env = require('dotenv');
 
-// Routes Requires
-const drinkRoutes = require('./routes/drinks-routes.js');
-const commentsRoutes = require('./routes/comments-routes');
-
 // Config Variables
 const publicPath = path.join(__dirname, '/public');
 const port = process.env.PORT || 3000;
@@ -59,23 +55,16 @@ require('./routes/auth-routes.js')(app, passport);
 // Load Passport Strategies
 require('./config/passport/passport.js')(passport, db.users);
 
+const drinkRoutes = require('./routes/drinks-routes.js');
 // ===== Drinks ======
-app.use("/drinks", drinkRoutes);
-
-// ======= Comments =======
-app.use('/drinks/:id/comments', commentsRoutes );
-
+app.use('/drinks/', drinkRoutes);
 
 // ===== APIs ======
 require('./routes/api-routes.js')(app);
 
-
-app.get('*', function(req, res){
-    res.status(404).render('notfound');
-  });
-
 // Server Listen Setup
-db.sequelize.sync({ }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
+    console.log('Database Running.')
     app.listen(port, () =>{
         console.log("Server listening on port: " + port);
     });

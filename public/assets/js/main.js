@@ -8,6 +8,17 @@ $('document').ready(function(){
     
     $('#test').on('click',function () {$('.ui.sidebar.inverted').sidebar('toggle')}) 
 
+    $('#newCommentForm').form({
+        fields: {
+
+        },
+        onSuccess: function () {
+            $.get('/api/user_data').then(function (userid) {
+                console.log(userid + '*************************************************************************************************************************************************************************************');
+            })
+        }
+    })
+
     $('#newDrinkForm').form({
         fields: {
 
