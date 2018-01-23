@@ -33,8 +33,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 // ===== TEST ROUTES ======
 app.get("/",(req, res)=>{
@@ -58,6 +57,9 @@ app.get("/",(req, res)=>{
 require('./routes/auth-routes.js')(app, passport);
 // Load Passport Strategies
 require('./config/passport/passport.js')(passport, db.users);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // ===== Drinks ======
 app.use("/drinks", drinkRoutes);
