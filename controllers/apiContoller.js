@@ -28,7 +28,7 @@ module.exports = {
     getAllDrinks: (req, res) => {
         db.drinks.findAll({}).then((drinks) => {
             if(!drinks.length === 0){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(drinks);
             res.json(drinks);
@@ -41,7 +41,7 @@ module.exports = {
             }
         }).then((drink) => {
             if(!drink === 0){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(drink);
             res.json(drink);
@@ -84,7 +84,7 @@ module.exports = {
     getAllComments: (req, res) => {
         db.comments.findAll({}).then((comments) =>{
             if(!comments){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(comments);
             res.json(comments);
@@ -98,7 +98,7 @@ module.exports = {
             }
         }).then((comment) => {
             if(!comment === 0) {
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(comment);
             res.json(comment);
@@ -141,7 +141,7 @@ module.exports = {
     getAllRatings: (req, res) => {
         db.ratings.findAll({}).then((ratings) =>{
             if(!ratings){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(ratings);
             res.json(ratings);
