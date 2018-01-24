@@ -61,7 +61,7 @@ $('document').ready(function () {
     });
     $('#upVote').on('click', function () {
         $.get('/api/user_data').then(function (user) {
-            $.get('/api/rating/' + drinkId + '/' + user.userId, {}).then(function (response) {
+            $.get('/api/rating/' + drinkId + '/' + user.userId).then(function (response) {
                 console.log(response)
                 // if response equals not found
                 if (response.results === 'not found') {
