@@ -1,7 +1,43 @@
 
 <% include ../partials/indexHeader.ejs %>
 <div class="ui horizontal divider">
-<div class="landing-div">
+    <link rel="stylesheet" href="css/main.css">
+
+
+
+<body>
+
+  <div class="flex">
+  
+  <div class="first beer">
+    <div class="foam"></div>
+    <div class="liquid"></div>
+  </div>
+
+  <div class="second beer">
+    <div class="foam"></div>
+    <div class="liquid"></div>
+
+
+<div class="bar"></div>
+
+<div class="path">
+  <div class="people anim">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="legs"></div>
+  </div>
+ 
+
+
+<div class="data">
+  <h1>🍺 liQr</h1>
+</div>
+  
+
+    
+
+  <div class="landing-div">
         <% drinks.forEach(function(drink){ %>
             <a href="drinks/<%= drink.id %>"><div class="drinkContainer">
                 <h1 class="drinkName"><%= drink.drink_name %></h1>
@@ -16,10 +52,13 @@
                 <%= drink.drink_name %>
             </p> -->
         <% }); %>
+
 </div></a>
 </div>
-
+  </div>
 </div>
-    
+</div>
+</div>
+    <script  src="js/main.js"></script>
 <% include ../partials/footer.ejs %>
 

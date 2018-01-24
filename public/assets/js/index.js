@@ -1,0 +1,8 @@
+var people = document.querySelector('.people');
+setInterval(function () {
+
+  people.classList.remove('anim');
+  setTimeout(function () {
+    people.classList.add('anim');
+  }, 1000);
+}, 15000);
