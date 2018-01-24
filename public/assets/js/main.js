@@ -61,20 +61,10 @@ $('document').ready(function () {
     });
     $('#upVote').on('click', function () {
         $.get('/api/user_data').then(function (user) {
-            $.get('/api/rating/' + drinkId + '/' + user.userId, {}).then(function (response) {
-                console.log(response)
-                // if response equals not found
-                if (response.results === 'not found') {
-                    console.log(response)
-                    //allow post rating
-                    $.post('/api/ratings', {
-                        rating: true,
-                        userId: userId,
-                        drinkId: drinkId
-                    }).then(function () {
-                        location.reload();
-                    })
-                } else {
+            $.ajax({
+                url: '/api/rating/' + drinkId + '/' + user.userId,
+                type: 'GET',
+                success: function(response){
                     $.ajax({
                         url: '/api/ratings/' + response.id,
                         type: 'PUT',
@@ -87,9 +77,20 @@ $('document').ready(function () {
                             location.reload()
                         }
                     })
+                },
+                error: function(response){
+                    console.log(response)
+                    //allow post rating
+                    $.post('/api/ratings', {
+                        rating: true,
+                        userId: user.userId,
+                        drinkId: drinkId
+                    }).then(function () {
+                        location.reload();
+                    })
                 }
-                //allow edit
             })
+            
         })
     })
     $('#downVote').on('click', function () {
