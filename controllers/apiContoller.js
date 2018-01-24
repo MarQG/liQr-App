@@ -179,7 +179,7 @@ module.exports = {
             drinkId: req.body.drinkId
         },{
             where:{
-                id: req.body.ratingId
+                id: req.params.id
             }
         }).then((results) => {
             res.json(results);
@@ -188,7 +188,7 @@ module.exports = {
     deleteRating: (req, res) => {
         db.ratings.destroy({
             where: {
-                id: req.body.ratingId
+                id: req.params.id
             }
         }).then((results)=> {
             res.json(results);
