@@ -69,7 +69,7 @@ $('document').ready(function () {
                         url: '/api/ratings/' + response.id,
                         type: 'PUT',
                         data: {
-                            rating: !response.rating,
+                            rating: true,
                             userId: response.userId,
                             drinkId: response.drinkId
                         },
@@ -103,7 +103,7 @@ $('document').ready(function () {
                         url: '/api/ratings/' + response.id,
                         type: 'PUT',
                         data: {
-                            rating: !response.rating,
+                            rating: false,
                             userId: response.userId,
                             drinkId: response.drinkId
                         },
@@ -130,6 +130,28 @@ $('document').ready(function () {
 
     $('#newDrinkForm').form({
         fields: {
+            name: {
+                rules: [{
+                    type: 'empty',
+                    message: 'Cannot be empty, please enter a name'
+                }]
+
+            },
+            description: {
+                rules: [{
+                    type: 'empty',
+                    message: 'Cannot be empty, please enter a description'
+                }]
+
+            }, 
+            imageLink: {
+                rules: [{
+                    type: 'url',
+                    message: 'Please enter a valid Image URL.'
+                }]
+
+            },
+            
 
         },
         onSuccess: function (e) {
