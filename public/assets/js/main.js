@@ -64,12 +64,15 @@ $('document').ready(function () {
             $.get('/api/rating/' + drinkId + '/' + user.userId, {}).then(function (response) {
                 console.log(response)
                 // if response equals not found
-                if (response === 'not found') {
+                if (response.results === 'not found') {
+                    console.log(response)
                     //allow post rating
                     $.post('/api/ratings', {
-                        rating: 1,
+                        rating: true,
                         userId: userId,
                         drinkId: drinkId
+                    }).then(function () {
+                        location.reload();
                     })
                 } else {
                     $.ajax({
@@ -98,11 +101,13 @@ $('document').ready(function () {
                 console.log(response)
                 // if response equals not found
                 if (!response && typeof response === "object") {
-                    //allow post rating
+                    console.log(response)
                     $.post('/api/ratings', {
-                        rating: 0,
+                        rating: false,
                         userId: userId,
                         drinkId: drinkId,
+                    }).then(function () {
+                        location.reload();
                     })
                 } else {
                     $.ajax({

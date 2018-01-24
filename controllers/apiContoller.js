@@ -156,7 +156,7 @@ module.exports = {
             }
         }).then((ratings) => {
             if (!ratings && typeof ratings === "object") {
-                res.status(404).send('not found').end();
+                return res.status(404).send({ results: 'not found'}).end();
             }
             console.log(ratings);
             res.json(ratings);
