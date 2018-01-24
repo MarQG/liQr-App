@@ -29,6 +29,7 @@ module.exports = (passport, user) => {
                 } else {
                     const userPassword = generateHash(password);
                     const data = {
+                        username: req.body.firstname + " " + req.body.lastname,
                         email: email,
                         password: userPassword,
                         first_name: req.body.firstname,
@@ -93,7 +94,7 @@ module.exports = (passport, user) => {
     passport.deserializeUser((id, done) => {
         User.findById(id).then((user) => {
             if(user) {
-                done(null, user.get());
+                done(null, user.get({}));
             } else {
                 done(user.errors, null);
             }
