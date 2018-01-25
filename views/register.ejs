@@ -1,18 +1,53 @@
 <% include partials/header.ejs%>
 
-<div>
-    <h1>Sign Up!</h1>
-    <form id="signup" name="signup" method="post" action="/register">
-        <label for="email">Email Address</label>
-        <input class="text" name="email" type="email" />
-        <label for="firstname">Firstname</label>
-        <input name="firstname" type="text" />
-        <label for="lastname">Lastname</label>
-        <input name="lastname" type="text" />
-        <label for="password">Password</label>
-        <input name="password" type="password" />
-        <input class="btn" type="submit" value="Sign Up" />
-    </form>
-</div>
-    
-<% include partials/footer.ejs %>
+    <div class="ui container">
+        <div class="ui grid">
+            <div class="eight wide column">
+                    <h1>Sign Up!</h1>
+
+                    <form class="ui form" id="signup" name="signup" method="post" action="/register">
+                        <div class="field">
+                            <label for="email">Email Address</label>
+                            <div class="ui left icon input">
+                                <input class="text" name="email" type="email" />
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="firstname">Firstname</label>
+                            <div class="ui left icon input">
+                                <input name="firstname" type="text" />
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="lastname">Lastname</label>
+                            <div class="ui left icon input">
+                                <input name="lastname" type="text" />
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="password">Password</label>
+                            <div class="ui left icon input">
+                                <input name="password" type="password" />
+                                <i class="user icon"></i>
+                            </div>
+                        </div>
+                        <input class="ui blue submit button" type="submit" value="Sign Up" />
+                        <a class="ui teal button" href="/login">Login</a>
+                        <div class="ui error message"></div>
+                    </form>
+            </div>
+            <div class="four wide column">
+                    
+                    <div >
+                        
+                    </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <% include partials/footer.ejs %>

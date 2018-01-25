@@ -1,22 +1,51 @@
 
 <% include ../partials/indexHeader.ejs %>
-<div class="ui horizontal divider">
+<div class="ui container">
 <div class="landing-div">
-        <% drinks.forEach(function(drink){ %>
-            <a href="/drinks/<%= drink.id %>"><div class="drinkContainer">
-                <h1 class="drinkName"><%= drink.drink_name %></h1>
-                <img src='<%= drink.image_link%>' alt="drink name" class="img">
-                <p><%= drink.description %></p>
-        <hr>
+    <div class="ui grid">
+            <% drinks.forEach(function(drink){ %>
+                <div class="four wide column">
+                        <a class="ui fluid card" href="/drinks/<%= drink.id %>">
+                            <div class="image">
+                                    <img src='<%= drink.image_link%>' alt="<%= drink.drink_name%>" class="ui image small"> 
+                                  </div>
+                            <div class="content">
+                              <div class="header"><%= drink.drink_name %></div>
+                             
+                              <div class="description">
+                                <p><%= drink.description %></p>
+                                
+                              </div>
+                              <div class="extra content">
+                                    <div class="right floated author">
+                                            <% var ratingAgainst =[];%>
+                                            <% var ratingFor = [];%>
+                                            <% drink.ratings.forEach(function(rating){ %>
+                                                <% if(rating.rating === true) { %>
+                                                    <% ratingFor.push(rating.rating); %>
+                                                <% }  else { %>
+                                                    <% ratingAgainst.push(rating.rating); %>
+                                                <% }%>
+                                            <% }) %>
+                                            <div class="ui label">
+                                                <i class="fas fa-thumbs-up"></i><%= ratingFor.length %>
+                                            </div>
+                                            <div class="ui label">
+                                                    <i class="fas fa-thumbs-down"></i><%= ratingAgainst.length %>
+                                            </div>
+                                    </div>
+                                  </div>
+                            </div>
+                          </a>
+                </div>
 
 
 
-            <!-- <p>
-                <%= drink.id %>
-                <%= drink.drink_name %>
-            </p> -->
-        <% }); %>
-</div></a>
+            <% }); %>
+
+    </div>
+       
+       
 </div>
 
 </div>

@@ -1,12 +1,20 @@
 <% include partials/headerlanding.ejs %>
 
-<div class="landing-div">
-    <h1 class header-text>
-        Candy is Dandy but <em class="logo">liQr</em> is quicker.
-    </h1>
-    <a href="/drinks">
-        <button class="ui primary button">Enter</button>
-    </a>
+<div class="ui container landing-div">
+    <div class="ui grid">
+        <div class="full column">
+                <h1 class header-text>
+                        Candy is Dandy but <em class="logo">liQr</em> is quicker.
+                    </h1>
+                    <a href="/login">
+                        <button class="ui teal basic massive button">Login!</button>
+                    </a>
+                    <a href="/register">
+                        <button class="ui yellow basic massive button">Sign Up!</button>
+                    </a>
+        </div>
+    </div>
+    
 </div>
     
 <% include partials/footer.ejs %>

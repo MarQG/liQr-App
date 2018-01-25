@@ -1,71 +1,103 @@
 <% include ../partials/header.ejs %>
-    <div class="ui horizontal divider">
-        <div>
-            <h1 class="drinkName">
-                <%= drink.drink_name %>
-            </h1>
-            <img src='<%= drink.image_link%>' alt="drink name" class="img">
-            <div class="commentsDiv">
-                <h2>Comments</h2>
-                <% drink.comments.forEach(function(comment){ %>
-                    <h4>
-                        <%= comment.comment %>
-                    </h4>
-                    <a href="#">
-                        <button data-commentId="<%= comment.id %>" id='editComment' class="mini ui button">Edit Comment</button>
-                    </a>
-                    <a href="#">
-                        <button id='deleteComment' class="mini ui button">Delete Comment</button>
-                    </a>
-                    <div class='editCommentForm' class="ui form" data-formId="<%=comment.id%>">
-                        <form class="edit-CommentForm" data-id='<%= comment.id%>'data-dataid="<%=  drink.id %>">
-                            <div class="field">
-                                <label>Edit comment</label>
-                                <textarea id="editCommentText" data-textId='<%= comment.id %>'></textarea>
-                            </div>
-                            <button id="submitEdit" class="ui button" type="submit">Submit Comment</button>
-                        </form>
-                    </div>
-                    <% }) %>
-                        <a href="#">
-                            <button id='addComment' class="ui button">Add Comment</button>
-                        </a>
-                        <div id='commentForm' class="ui form">
-                            <form id="newCommentForm" data-dataid="<%=  drink.id %>">
-                                <div class="field">
-                                    <label>Add your comment</label>
-                                    <textarea id="commentText"></textarea>
+    <di class="ui container">
+        <div class="ui grid center">
+            <div class="six wide column">
+                    <img src='<%= drink.image_link%>' alt="drink name" class="ui image medium">
+            </div>
+            <div class="six wide column">
+                    <h1 class="drinkName">
+                        <%= drink.drink_name %>
+                    </h1>
+                    <h1 class="drinkDesc">
+                        <%= drink.description %>
+                    </h1>
+                    <div class="ratingDiv white text">
+                            <% var ratingAgainst =[];%>
+                            <% var ratingFor = [];%>
+                            <% drink.ratings.forEach(function(rating){ %>
+                                <% if(rating.rating === true) { %>
+                                    <% ratingFor.push(rating.rating); %>
+                                <% }  else { %>
+                                    <% ratingAgainst.push(rating.rating); %>
+                                <% }%>
+                            <% }) %>
+                            <h2>Ratings</h2>
+                            <div class="ui labeled  button" id="upVote" tabindex="0">
+                                <div class="ui primary button">
+                                    <i class="fas fa-thumbs-up fa-2x"></i> Up Vote
                                 </div>
-                                <button id="submitComment" class="ui button" type="submit">Submit Comment</button>
-                            </form>
-                        </div>
-                        <div class="raitingDiv">
-                            <% var ratingCount =[];%>
-                                <% var ratingFor = [];%>
-                                    <% drink.ratings.forEach(function(rating){ %>
-                                        <%  ratingCount.push(rating.rating); %>
-                                            <% if(rating.rating === true) { %>
-                                                <% ratingFor.push(rating.rating); %>
-                                                    <% } %>
-                                                        <% }) %>
-                                                            <h2>Ratings</h2>
-                                                            <a href="#" id="upVote">
-                                                                <i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a href="#" id="downVote">
-                                                                <i class="fa fa-thumbs-down fa-3x" aria-hidden="true"></i>
-                                                            </a>
+                                <a class="ui basic label" href="#" >
+                                        <%= ratingFor.length %>
+                                </a>
+                            </div>
 
-                                                            <p>Total Ratings:
-                                                                <%= ratingCount.length %>
-                                                            </p>
-
-                                                            <p>Rating:
-                                                                <%= ratingFor.length %>
-                                                            </p>
+                            <div class="ui labeled  button" id="downVote" tabindex="0">
+                                    <div class="ui primary button">
+                                        <i class="fas fa-thumbs-down fa-2x"></i> Down Vote
+                                    </div>
+                                    <a class="ui basic label" href="#" >
+                                            
+                                            <%= ratingAgainst.length %>
+                                    </a>
+                                </div>
+                            
                         </div>
             </div>
+            <div class="row">
+                <div class="column">
+                        <div class="commentsDiv">
+                                <h2>Comments</h2>
+                                <% drink.comments.forEach(function(comment){ %>
+                                    <h4>
+                                        <%= comment.comment %>
+                                    </h4>
+                                    <% if(user === comment.userId ) {%>
+                                    <a href="#">
+                                        <button data-commentId="<%= comment.id %>" class="mini ui button edit-comment">Edit Comment</button>
+                                    </a>
+                                    <a href="#">
+                                        <button class="mini ui button delete-comment" data-commentId="<%= comment.id %>">Delete Comment</button>
+                                    </a>
+                                    <% } %>
+                                    <div class='editCommentForm' class="ui form" data-formId="<%=comment.id%>">
+                                        <form class="edit-CommentForm" data-id='<%= comment.id%>'data-dataid="<%=  drink.id %>">
+                                            <div class="field">
+                                                <label>Edit comment</label>
+                                                <textarea id="editCommentText" data-textId='<%= comment.id %>'><%= comment.comment%></textarea>
+                                            </div>
+                                            <button id="submitEdit" data-id='<%= comment.id%>' class="ui button" type="submit">Submit Comment</button>
+                                        </form>
+                                    </div>
+                                    <% }) %>
+                                    
+                                        
+                            </div>
+                
+                </div>
+                
+            </div>
+            <div class="row">
+                    <div class="column">
 
+                            <div>
+                                    <a href="#">
+                                            <button id='addComment' class="ui button">Add Comment</button>
+                                        </a>
+                            </div>
+                                
+                                <div id='commentForm' class="ui form">
+                                    <form id="newCommentForm" data-dataid="<%=  drink.id %>">
+                                        <div class="field">
+                                            <label>Add your comment</label>
+                                            <textarea id="commentText"></textarea>
+                                        </div>
+                                        <button id="submitComment" class="ui button" type="submit">Submit Comment</button>
+                                    </form>
+                                </div>
+                    </div>
+            </div>
+            
+            
         </div>
 
 

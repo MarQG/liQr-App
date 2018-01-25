@@ -7,7 +7,7 @@ module.exports = {
     drinks: (req, res) => {
         //call db.drinks.findAll() and render the page while passing in the data
         // res.render( args1, args2)
-        db.drinks.findAll({}).then((results) => {
+        db.drinks.findAll({ include: [db.ratings]}).then((results) => {
             // console.log(results[0].drink_name);
             if(!results){
                 res.status(404).end();
@@ -32,7 +32,8 @@ module.exports = {
             include: [db.comments, db.ratings]
         }).then((result) => {
             console.log(result);
-            res.render('drinks/showdrink', {drink:result});
+            res.render('drinks/showdrink', {drink:result, 
+                user: req.user.id});
         });
     	
     }
