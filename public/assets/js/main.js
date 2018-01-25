@@ -42,7 +42,38 @@ $('document').ready(function () {
             });
         }
     });
-
+    $('.edit-CommentForm').form({
+        onSuccess: function() {
+            var commentId = $(this).attr('data-id');
+            console.log(commentId);
+            $.get('/api/user_data').then(function (user) {
+                $.ajax({
+                    url: '/api/comments/' + commentId,
+                    type: 'GET',
+                    data: {
+                        id: commentId
+                    },
+                    success: function (comment) {
+                        $.ajax({
+                            url: '/api/comments/' + commentId,
+                            type: 'PUT',
+                            data : {
+                                comment: $('#editCommentText[data-textId = ' + commentId + ']').val().trim(),
+                                drinkId: drinkId,
+                                userId: user.userId
+                            },
+                            success: function () {
+                                location.reload();
+                            },
+                            error: function () {
+                                alert('Sorry you have to be the user who posted this comment to edit it!')
+                            }
+                        })
+                    }
+                })
+            })
+        }
+    })
     $('#newCommentForm').form({
         fields: {
 
@@ -60,6 +91,7 @@ $('document').ready(function () {
             })
         }
     });
+
     $('#upVote').on('click', function () {
         $.get('/api/user_data').then(function (user) {
             $.ajax({
