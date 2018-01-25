@@ -24,6 +24,11 @@ module.exports = (passport, user) => {
             }).then( (user) => {
                 if(user){
                     return done(null, false, {
+                        // app.get("/flash", function(req, res){
+                            // req.flash("message", "That email is already taken.");
+                            // res.locals.messages = req.flash();
+                            // res.redirect("/");
+                        // });
                         message: 'That email is already taken.'
                     });
                 } else {
@@ -70,6 +75,12 @@ module.exports = (passport, user) => {
             }).then((user) => {
                 if(!user){
                     return done(null, false, {
+                        // app.get("/flash", function(req, res){
+                            // req.flash("message", "Email does not exist");
+                            // res.locals.messages = req.flash();
+                            // res.redirect("/");
+                        // });
+                        
                         message: 'Email does not exist'
                     });
                 }
