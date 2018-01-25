@@ -173,14 +173,7 @@ $('document').ready(function () {
     })
     $('.mini.ui.button').on("click",function(){
        var commentId = $(this).attr('data-commentId');
-       console.log(commentId)
-       console.log($('.editCommentForm').attr('data-formId'));
-        if ($(this).attr('data-commentId') === $('.editCommentForm').attr('data-formId')) {
-            console.log($('.editCommentForm').attr('data-formId'));
-            $('.editCommentForm[data-formId='+ commentId +']').show()
-        } else {
-            $('.editCommentForm').hide
-        }
+       $('.editCommentForm[data-formId='+ commentId +']').show()
 
     })
 });
