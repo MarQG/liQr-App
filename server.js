@@ -20,7 +20,7 @@ const port = process.env.PORT || 3000;
 // Express Configuration
 app.use(express.static(publicPath));
 // Body Parser Configuration
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // EJS Config
@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ===== TEST ROUTES ======
-app.get("/",(req, res)=>{
+app.get("/", (req, res) => {
     let testText = [
         {
             name: 'Ferenc'
@@ -59,24 +59,26 @@ require('./routes/auth-routes.js')(app, passport);
 // Load Passport Strategies
 require('./config/passport/passport.js')(passport, db.users);
 
+
+
 // ===== Drinks ======
 app.use("/drinks", drinkRoutes);
 
 // ======= Comments =======
-app.use('/drinks/:id/comments', commentsRoutes );
+app.use('/drinks/:id/comments', commentsRoutes);
 
 
 // ===== APIs ======
 require('./routes/api-routes.js')(app);
 
 
-app.get('*', function(req, res){
+app.get('*', function (req, res) {
     res.status(404).render('notfound');
-  });
+});
 
 // Server Listen Setup
-db.sequelize.sync({ }).then(() => {
-    app.listen(port, () =>{
+db.sequelize.sync({}).then(() => {
+    app.listen(port, () => {
         console.log("Server listening on port: " + port);
     });
 })

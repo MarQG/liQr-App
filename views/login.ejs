@@ -2,25 +2,27 @@
 
 <div class="ui two column middle aligned very relaxed stackable grid">
     <div class="column">
-        <div class="ui form">
+        <form id="loginForm" class="ui form">
             <div class="field">
-                <label>Username</label>
+                <label>Email</label>
                 <div class="ui left icon input">
-                    <input type="text" placeholder="Username">
+                    <input id="emailForm" type="text" placeholder="Username" name="email">
                     <i class="user icon"></i>
                 </div>
             </div>
             <div class="field">
                 <label>Password</label>
                 <div class="ui left icon input">
-                    <input type="password">
+                    <input id="passwordForm" type="password" name="password">
                     <i class="lock icon"></i>
                 </div>
             </div>
             <div class="ui blue submit button">Login</div>
-        </div>
+            <div class="ui error message"></div>
+        </form>
     </div>
     <div class="ui vertical divider">
+    </form>
         Or
     </div>
     <div class="center aligned column">
