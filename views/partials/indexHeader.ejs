@@ -21,7 +21,7 @@
     </div>
     <div class="landing-div">
 
-        <body>
+        
             <div class="ui sidebar inverted vertical menu">
                 <% var randNum = Math.floor(Math.random() * drinks.length)%>
                     <%= console.log(randNum)%>
@@ -36,7 +36,14 @@
                         </a>
             </div>
             <div class="pusher">
-                <!-- Site content !-->
-            </div>
-        </body>
-    </div>
+                    <% if(error && error.length > 0){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%= error %>
+                        </div>
+                    <% } %>
+                    <% if(success && success.length > 0){ %>
+                        <div class="alert alert-success" role="alert">
+                            <%= success %>
+                        </div>
+                    <% } %>
+                    <!-- Site content !-->
