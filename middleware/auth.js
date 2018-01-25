@@ -13,29 +13,8 @@ module.exports = {
         if(req.isAuthenticated()){
             return next();
         }
+        req.
         res.redirect('/login');
-    },
-    checkCommentOwnership: (req, res, next) => {
-        if(req.isAuthenticated()){
-            //does user own the comment?
-            db.comments.findOne({
-                where:{
-                    id: req.params.comment_id
-                }
-            }).then(function(comment){
-                if(comment === 0){
-                    res.redirect('back');
-                } else {
-                    if(comment.userId === req.user._id){
-                        next();
-                    } else {
-                        req.redirect('back');
-                    }
-                }
-            });
-        } else {
-            req.flash("error", "You need to be logged in to do that");
-            res.redirect("back");
-        }
     }
 }
+

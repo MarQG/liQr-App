@@ -18,7 +18,6 @@
     </a>
   </div>
         <div class="landing-div">
-                <body>
                     <div class="ui sidebar inverted vertical menu">
                       <a href="/drinks" class="item">
                         Drinks
@@ -26,13 +25,22 @@
                       <a href='/drinks/new'class="item">
                         Add new Drink
                       </a>
-                      <a class="item">
-                        Login/Logout
+                      <a href='/login'class="item">
+                        Login
                       </a>
+                      
                     </div>
                     <div class="pusher">
+
+                        <% if(error && error.length > 0){ %>
+                          <div class="alert alert-danger" role="alert">
+                              <%= error %>
+                          </div>
+                      <% } %>
+                      <% if(success && success.length > 0){ %>
+                          <div class="alert alert-success" role="alert">
+                              <%= success %>
+                          </div>
+                      <% } %>
                       <!-- Site content !-->
-                    </div>
-                  </body>
-            </div>
             

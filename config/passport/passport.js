@@ -24,11 +24,17 @@ module.exports = (passport, user) => {
             }).then( (user) => {
                 if(user){
                     return done(null, false, {
+                        // app.get("/flash", function(req, res){
+                            // req.flash("message", "That email is already taken.");
+                            // res.locals.messages = req.flash();
+                            // res.redirect("/");
+                        // });
                         message: 'That email is already taken.'
                     });
                 } else {
                     const userPassword = generateHash(password);
                     const data = {
+                        username: req.body.firstname + " " + req.body.lastname,
                         email: email,
                         password: userPassword,
                         first_name: req.body.firstname,
@@ -69,6 +75,12 @@ module.exports = (passport, user) => {
             }).then((user) => {
                 if(!user){
                     return done(null, false, {
+                        // app.get("/flash", function(req, res){
+                            // req.flash("message", "Email does not exist");
+                            // res.locals.messages = req.flash();
+                            // res.redirect("/");
+                        // });
+                        
                         message: 'Email does not exist'
                     });
                 }
@@ -93,7 +105,7 @@ module.exports = (passport, user) => {
     passport.deserializeUser((id, done) => {
         User.findById(id).then((user) => {
             if(user) {
-                done(null, user.get({plain: true}));
+                done(null, user.get({}));
             } else {
                 done(user.errors, null);
             }

@@ -6,6 +6,7 @@ module.exports = {
         res.render('login');
     },
     logout: (req, res) => {
+        req.logOut();
         res.redirect('/');
     }
 }
