@@ -1,5 +1,16 @@
 <% include partials/headerlanding.ejs %>
 
+
+<div>
+	<% if(error && error.length > 0){  %>
+		<div>
+			<%= error%>
+		</div>	
+
+	<%}%>
+		
+</div>
+
 <div class="landing-div">
     <h1 class header-text>
         Candy is Dandy but <em class="logo">liQr</em> is quicker.

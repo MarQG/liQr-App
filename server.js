@@ -8,6 +8,8 @@ const localStorage = require('passport-local');
 const app = express();
 const db = require('./models');
 const env = require('dotenv');
+const flash = require('express-flash');
+     
 
 // Routes Requires
 const drinkRoutes = require('./routes/drinks-routes.js');
@@ -22,6 +24,7 @@ app.use(express.static(publicPath));
 // Body Parser Configuration
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(flash());
 
 // EJS Config
 app.set("view engine", "ejs");
@@ -49,6 +52,7 @@ app.get("/", (req, res) => {
             name: "Mel"
         }
     ]
+    req.flash('error', 'welcome');
     res.render('landing', { text: testText });
 });
 
