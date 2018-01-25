@@ -32,65 +32,20 @@ $('document').ready(function () {
         },
         onSuccess: function (e) {
             e.preventDefault();
-            console.log('success ran');
             $.post('/login', {
                 email: $('#emailForm').val().trim(),
                 password: $('#passwordForm').val().trim()
-            }).then(function () {
+            }).then(function (results) {
+                console.log(results);
                 window.location = "/drinks/";
                 console.log('form Submitted');
             });
         }
     });
-    $('.edit-CommentForm').form({
-        onSuccess: function() {
-            var commentId = $(this).attr('data-id');
-            console.log(commentId);
-            $.get('/api/user_data').then(function (user) {
-                $.ajax({
-                    url: '/api/comments/' + commentId,
-                    type: 'GET',
-                    data: {
-                        id: commentId
-                    },
-                    success: function (comment) {
-                        $.ajax({
-                            url: '/api/comments/' + commentId,
-                            type: 'PUT',
-                            data : {
-                                comment: $('#editCommentText[data-textId = ' + commentId + ']').val().trim(),
-                                drinkId: drinkId,
-                                userId: user.userId
-                            },
-                            success: function () {
-                                location.reload();
-                            },
-                            error: function () {
-                                alert('Sorry you have to be the user who posted this comment to edit it!')
-                            }
-                        })
-                    }
-                })
-            })
-        }
-    })
-    $('#newCommentForm').form({
-        fields: {
 
-        },
-        onSuccess: function (e) {
-            console.log(drinkId);
-            $.get('/api/user_data').then(function (user) {
-                $.post('/api/comments', {
-                    userId: user.userId,
-                    comment: $('#commentText').val().trim(),
-                    drinkId: drinkId
-                }).then(function () {
-                    location.reload();
-                })
-            })
-        }
-    });
+    
+    
+   
 
     $('#upVote').on('click', function () {
         $.get('/api/user_data').then(function (user) {
@@ -198,14 +153,68 @@ $('document').ready(function () {
         }
     })
 
+    // ======= Comment Section =======
+
+    $('#newCommentForm').form({
+        fields: {
+
+        },
+        onSuccess: function (e) {
+
+            $.get('/api/user_data').then(function (user) {
+                $.post('/api/comments', {
+                    userId: user.userId,
+                    comment: $('#commentText').val().trim(),
+                    drinkId: drinkId
+                }).then(function () {
+                    location.reload();
+                })
+            })
+        }
+    });
+
     $('#addComment').on('click', function () {
         $('#commentForm').show()
         $('#addComment').hide();
 
     })
-    $('.mini.ui.button').on("click",function(){
+    $('.edit-comment').on("click",function(){
        var commentId = $(this).attr('data-commentId');
        $('.editCommentForm[data-formId='+ commentId +']').show()
 
     })
+
+    $('button[type="submit"]').on('click', function(e){
+        var commentId = $(this).attr('data-id');
+
+        $('.edit-CommentForm[data-id="'+ commentId + '"]').form({
+            onSuccess: function() {
+                var commentId = $(this).attr('data-id');
+                $.get('/api/user_data').then(function (user) {
+                    $.ajax({
+                        url: '/api/comments/' + commentId,
+                        type: 'PUT',
+                        data : {
+                            comment: $('#editCommentText[data-textId = "' + commentId + '"]').val().trim(),
+                            drinkId: drinkId,
+                            userId: user.userId
+                        },
+                        success: function () {
+                            location.reload();
+                        }
+                    });
+                })
+            }
+        })
+    });
+
+    $('.delete-comment').on('click', function(){
+        var commentId = $(this).attr("data-commentId");
+        $.ajax({
+            type: "DELETE",
+            url: '/api/comments/' + commentId,
+        }).then(function(){
+            location.reload();
+        });
+    });
 });
