@@ -212,7 +212,10 @@ $('document').ready(function () {
                     comment: $('#commentText').val().trim(),
                     drinkId: drinkId
                 }).then(function () {
-                    location.reload();
+                    setTimeout(function(){
+                        location.reload();
+                    }, 500)
+                   
                 })
             })
         }
