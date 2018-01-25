@@ -1,19 +1,15 @@
-/* body {
-    background-size: cover;
-    font-family: 'Montserrat',
-    sans-serif;
-
-}
-
-
-
-.logo {
-    color: rgb(231, 121, 31);
-}
-.header-text {
-    font-weight: 200;
-} */
-
 .landing-div {
     margin-top: 5vh;
+}
+body {
+/* background: url('https://www.iwantbeerrightnow.com/blog/wp-content/uploads/2016/05/DSCN0087.jpg') no-repeat fixed center;
+background-size: cover;
+} */
+.commentsDiv{
+    background: white;
+    opacity: 1;
+    padding: 10px;
+    border-radius: 25px;
+    width: 50%;
+    border: 2px solid goldenrod;
 }
