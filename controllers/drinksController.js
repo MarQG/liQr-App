@@ -29,9 +29,14 @@ module.exports = {
             where: {
                 id: req.params.id
             },
-            include: [db.comments, db.ratings]
+            include: [{
+                model: db.comments,
+                include: [
+                    db.users
+                ]
+            }, db.ratings]
         }).then((result) => {
-            console.log(result);
+            console.log(result.comments[0].user.username);
             res.render('drinks/showdrink', {drink:result, 
                 user: req.user.id});
         });

@@ -51,17 +51,18 @@
                                     <div class="ui grid">
                                         <div class="sixteen wide column">
                                                 <h4>
-                                                        <%= comment.comment %>
-                                                    </h4>
-                                                    <% if(user === comment.userId ) {%>
-                                                    <a href="#">
-                                                        <button data-commentId="<%= comment.id %>" class="mini ui button edit-comment">Edit Comment</button>
-                                                    </a>
-                                                    <a href="#">
-                                                        <button class="mini ui button delete-comment" data-commentId="<%= comment.id %>">Delete Comment</button>
-                                                    </a>
-                                                    <% } %>
-                                        </div>
+                                                    <%= comment.comment %>
+                                                </h4>
+                                                <p><em>- <%= comment.user.username%></em></p>
+                                                <% if(user === comment.userId ) {%>
+                                                <a href="#">
+                                                    <button data-commentId="<%= comment.id %>" class="mini ui button edit-comment">Edit Comment</button>
+                                                </a>
+                                                <a href="#">
+                                                    <button class="mini ui button delete-comment" data-commentId="<%= comment.id %>">Delete Comment</button>
+                                                </a>
+                                                <% } %>
+                                    </div>
                                         <div class="sixteen wide column">
                                                 <div class='ui form editCommentForm' data-formId="<%=comment.id%>">
                                                         <form class="edit-CommentForm"  data-id='<%= comment.id%>'data-dataid="<%=  drink.id %>">
