@@ -42,7 +42,7 @@ const apiController = require('../controllers/apiContoller.js');
     app.put('/api/ratings/:id', apiController.editRating);
 
     app.delete('/api/ratings/:id', apiController.deleteRating);
-    
+
  };
 
  

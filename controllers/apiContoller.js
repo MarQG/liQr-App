@@ -139,6 +139,7 @@ module.exports = {
         });
     },
     getAllRatings: (req, res) => {
+
         db.ratings.findAll({}).then((ratings) =>{
             if(!ratings){
                 return res.status(404).end();
@@ -195,6 +196,7 @@ module.exports = {
         });
     }
     
+
 
 
 };

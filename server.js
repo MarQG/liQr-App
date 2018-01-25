@@ -8,6 +8,8 @@ const localStorage = require('passport-local');
 const app = express();
 const db = require('./models');
 const env = require('dotenv');
+const flash = require('connect-flash');
+     
 
 // Routes Requires
 const drinkRoutes = require('./routes/drinks-routes.js');
@@ -22,6 +24,7 @@ app.use(express.static(publicPath));
 // Body Parser Configuration
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(flash());
 
 // EJS Config
 app.set("view engine", "ejs");
@@ -31,25 +34,25 @@ app.set("view engine", "ejs");
 app.use(session({
     secret: "yolo swag",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 60000
+    }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    next();
+});
+
 // ===== TEST ROUTES ======
 app.get("/", (req, res) => {
-    let testText = [
-        {
-            name: 'Ferenc'
-        },
-        {
-            name: "Collin"
-        },
-        {
-            name: "Mel"
-        }
-    ]
-    res.render('landing', { text: testText });
+    req.flash('error', 'nope')
+    res.render('landing');
 });
 
 // ===== ROUTES ======

@@ -69,7 +69,7 @@ $('document').ready(function () {
                         url: '/api/ratings/' + response.id,
                         type: 'PUT',
                         data: {
-                            rating: !response.rating,
+                            rating: true,
                             userId: response.userId,
                             drinkId: response.drinkId
                         },
@@ -95,27 +95,15 @@ $('document').ready(function () {
     })
     $('#downVote').on('click', function () {
         $.get('/api/user_data').then(function (user) {
-            $.get('/api/rating/' + drinkId + '/' + user.userId, {
-                drinkId: drinkId,
-                userId: user.userId
-            }).then(function (response) {
-                console.log(response)
-                // if response equals not found
-                if (!response && typeof response === "object") {
-                    console.log(response)
-                    $.post('/api/ratings', {
-                        rating: false,
-                        userId: userId,
-                        drinkId: drinkId,
-                    }).then(function () {
-                        location.reload();
-                    })
-                } else {
+            $.ajax({
+                url: '/api/rating/' + drinkId + '/' + user.userId,
+                type: 'GET',
+                success: function (response) {
                     $.ajax({
                         url: '/api/ratings/' + response.id,
                         type: 'PUT',
                         data: {
-                            rating: !response.rating,
+                            rating: false,
                             userId: response.userId,
                             drinkId: response.drinkId
                         },
@@ -123,14 +111,47 @@ $('document').ready(function () {
                             location.reload()
                         }
                     })
+                },
+                error: function (response) {
+                    console.log(response)
+                    //allow post rating
+                    $.post('/api/ratings', {
+                        rating: false,
+                        userId: user.userId,
+                        drinkId: drinkId
+                    }).then(function () {
+                        location.reload();
+                    })
                 }
-                //allow edit
             })
+
         })
     })
 
     $('#newDrinkForm').form({
         fields: {
+            name: {
+                rules: [{
+                    type: 'empty',
+                    message: 'Cannot be empty, please enter a name'
+                }]
+
+            },
+            description: {
+                rules: [{
+                    type: 'empty',
+                    message: 'Cannot be empty, please enter a description'
+                }]
+
+            }, 
+            imageLink: {
+                rules: [{
+                    type: 'url',
+                    message: 'Please enter a valid Image URL.'
+                }]
+
+            },
+            
 
         },
         onSuccess: function (e) {
