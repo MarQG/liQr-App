@@ -36,7 +36,6 @@ module.exports = {
                 ]
             }, db.ratings]
         }).then((result) => {
-            console.log(result.comments[0].user.username);
             res.render('drinks/showdrink', {drink:result, 
                 user: req.user.id});
         });
