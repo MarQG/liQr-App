@@ -179,7 +179,8 @@ $('document').ready(function () {
             }, 
             imageLink: {
                 rules: [{
-                    type: 'url',
+                    type: 'regex',
+                    value: /(https?:\/\/.*\.(?:png|jpg))/i,
                     message: 'Please enter a valid Image URL.'
                 }]
 
