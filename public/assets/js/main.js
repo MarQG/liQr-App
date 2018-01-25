@@ -6,7 +6,18 @@ $('document').ready(function(){
     $('.drinkName').transition('jiggle');
     
     
-    $('#test').on('click',function () {$('.ui.sidebar.inverted').sidebar('toggle')}) 
+    $('#test').on('click',function () {$('.ui.sidebar.inverted').sidebar('toggle')})
+    
+    $('#newCommentForm').form({
+        fields: {
+
+        },
+        onSuccess: function(){
+            $.get('/api/user_data'),{
+                
+            }
+        }
+    })
 
     $('#newDrinkForm').form({
         fields: {
@@ -28,6 +39,6 @@ $('document').ready(function(){
         $('#addComment').hide();
 
     })
-    
+  
 
 });
