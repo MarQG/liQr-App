@@ -42,6 +42,51 @@ $('document').ready(function () {
             });
         }
     });
+    $('#signup').form({
+        fields: {
+            email: {
+                rules: [{
+                    type: 'email',
+                    message: 'Not a valid email. Please enter a valid email address.'
+                }]
+
+            },
+            firstname: {
+                rules:[{
+                    type: 'empty',
+                    message: 'Enter your first name'
+                }]  
+            },
+            lastname:{
+                rules: [{
+                        type: 'empty',
+                        message: 'Enter your last name'
+                }]
+            },
+            password: {
+                rules: [{
+                    type: 'empty',
+                    message: 'Password cannot be empty.'
+                }]
+
+            }
+        },
+        onSuccess: function (e) {
+            e.preventDefault();
+            $.post('/register', {
+                email: $('#email-Form').val().trim(),
+                password: $('#password-Form').val().trim(),
+                firstname: $('#firstName-Form').val().trim(),
+                lastname: $('#lastName-Form').val().trim()
+
+            }).then(function (results) {
+                console.log(results);
+                window.location = "/drinks/";
+                console.log('form Submitted');
+            });
+        }
+    });
+
 
     
     
