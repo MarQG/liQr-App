@@ -6,17 +6,23 @@
 <div class="commentsDiv">
     <h2>Comments</h2>
    <% drink.comments.forEach(function(comment){ %>
+<<<<<<< HEAD
     <p><%= comment.comment %></p>
     <button id="editComment" class="mini ui button" type="submit">Edit</button>
     <script>document.getElementById("commentForm").innerHTML="text"</script>
+=======
+    <h4><%= comment.comment %></h4>
+>>>>>>> 12fffbc04d36f665c4ea5432c1c07c55c55b9173
 <% }) %> 
 <a href="#"><button id='addComment' class="ui button">Add Comment</button></a>
 <div id='commentForm'class="ui form">
+    <form id="newCommentForm" data-dataid="<%=  drink.id %>">
     <div class="field">
         <label>Add your comment</label>
-        <textarea></textarea>
+        <textarea id="commentText"></textarea>
     </div>
     <button id="submitComment" class="ui button" type="submit">Submit Comment</button>
+    </form>
 </div>
 <div class="raitingDiv">
 <% var ratingCount =[];%>
@@ -28,8 +34,8 @@
     <% } %>
 <% }) %>
 <h2>Ratings</h2>
-<a href="#"><i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i></a>
-<a href="#"><i class="fa fa-thumbs-down fa-3x" aria-hidden="true"></i></a>
+<a href="#" id="upVote"><i class="fa fa-thumbs-up fa-3x" aria-hidden="true"></i></a>
+<a href="#" id="downVote"><i class="fa fa-thumbs-down fa-3x" aria-hidden="true"></i></a>
 
 <p>Total Ratings: <%= ratingCount.length %></p>
 

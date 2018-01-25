@@ -28,7 +28,7 @@ module.exports = {
     getAllDrinks: (req, res) => {
         db.drinks.findAll({}).then((drinks) => {
             if(!drinks.length === 0){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(drinks);
             res.json(drinks);
@@ -41,7 +41,7 @@ module.exports = {
             }
         }).then((drink) => {
             if(!drink === 0){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(drink);
             res.json(drink);
@@ -84,7 +84,7 @@ module.exports = {
     getAllComments: (req, res) => {
         db.comments.findAll({}).then((comments) =>{
             if(!comments){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(comments);
             res.json(comments);
@@ -98,7 +98,7 @@ module.exports = {
             }
         }).then((comment) => {
             if(!comment === 0) {
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(comment);
             res.json(comment);
@@ -141,7 +141,7 @@ module.exports = {
     getAllRatings: (req, res) => {
         db.ratings.findAll({}).then((ratings) =>{
             if(!ratings){
-                res.status(404).end();
+                return res.status(404).end();
             }
             console.log(ratings);
             res.json(ratings);
@@ -151,12 +151,12 @@ module.exports = {
     getRating: (req, res) => {
         db.ratings.findOne({
             where: {
-                userId: req.body.userId,
-                drinkId: req.body.drinkId
+                userId: req.params.user_id,
+                drinkId: req.params.drink_id
             }
         }).then((ratings) => {
-            if(!ratings === 0) {
-                res.status(404).end();
+            if (!ratings && typeof ratings === "object") {
+                return res.status(404).send({ results: 'not found'}).end();
             }
             console.log(ratings);
             res.json(ratings);
@@ -179,7 +179,7 @@ module.exports = {
             drinkId: req.body.drinkId
         },{
             where:{
-                id: req.body.ratingId
+                id: req.params.id
             }
         }).then((results) => {
             res.json(results);
@@ -188,7 +188,7 @@ module.exports = {
     deleteRating: (req, res) => {
         db.ratings.destroy({
             where: {
-                id: req.body.ratingId
+                id: req.params.id
             }
         }).then((results)=> {
             res.json(results);
