@@ -48,26 +48,35 @@
                         <div class="commentsDiv">
                                 <h2>Comments</h2>
                                 <% drink.comments.forEach(function(comment){ %>
-                                    <h4>
-                                        <%= comment.comment %>
-                                    </h4>
-                                    <% if(user === comment.userId ) {%>
-                                    <a href="#">
-                                        <button data-commentId="<%= comment.id %>" class="mini ui button edit-comment">Edit Comment</button>
-                                    </a>
-                                    <a href="#">
-                                        <button class="mini ui button delete-comment" data-commentId="<%= comment.id %>">Delete Comment</button>
-                                    </a>
-                                    <% } %>
-                                    <div class='editCommentForm' class="ui form" data-formId="<%=comment.id%>">
-                                        <form class="edit-CommentForm" data-id='<%= comment.id%>'data-dataid="<%=  drink.id %>">
-                                            <div class="field">
-                                                <label>Edit comment</label>
-                                                <textarea id="editCommentText" data-textId='<%= comment.id %>'><%= comment.comment%></textarea>
-                                            </div>
-                                            <button id="submitEdit" data-id='<%= comment.id%>' class="ui button" type="submit">Submit Comment</button>
-                                        </form>
+                                    <div class="ui grid">
+                                        <div class="sixteen wide column">
+                                                <h4>
+                                                    <%= comment.comment %>
+                                                </h4>
+                                                <p><em>- <%= comment.user.username%></em></p>
+                                                <% if(user === comment.userId ) {%>
+                                                <a href="#">
+                                                    <button data-commentId="<%= comment.id %>" class="mini ui button edit-comment">Edit Comment</button>
+                                                </a>
+                                                <a href="#">
+                                                    <button class="mini ui button delete-comment" data-commentId="<%= comment.id %>">Delete Comment</button>
+                                                </a>
+                                                <% } %>
                                     </div>
+                                        <div class="sixteen wide column">
+                                                <div class='ui form editCommentForm' data-formId="<%=comment.id%>">
+                                                        <form class="edit-CommentForm"  data-id='<%= comment.id%>'data-dataid="<%=  drink.id %>">
+                                                            <div class="field">
+                                                                <label>Edit comment</label>
+                                                                <textarea id="editCommentText" data-textId='<%= comment.id %>' ><%= comment.comment%></textarea>
+                                                            </div>
+                                                            <button id="submitEdit" data-id='<%= comment.id%>' class="ui button" type="submit">Submit Comment</button>
+                                                        </form>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                   
+                                   
                                     <% }) %>
                                     
                                         

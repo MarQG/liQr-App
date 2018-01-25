@@ -51,7 +51,6 @@ app.use(function(req, res, next){
 
 // ===== TEST ROUTES ======
 app.get("/", (req, res) => {
-    req.flash('error', 'nope')
     res.render('landing');
 });
 
