@@ -3,6 +3,7 @@ $('document').ready(function () {
     console.log(drinkId)
     console.log('main.js connected');
     $('#commentForm').hide();
+    $('.editCommentForm').hide();
     $('.img').hide()
     $('.img').transition('jiggle');
     $('.drinkName').transition('jiggle');
@@ -170,5 +171,16 @@ $('document').ready(function () {
         $('#addComment').hide();
 
     })
+    $('.mini.ui.button').on("click",function(){
+       var commentId = $(this).attr('data-commentId');
+       console.log(commentId)
+       console.log($('.editCommentForm').attr('data-formId'));
+        if ($(this).attr('data-commentId') === $('.editCommentForm').attr('data-formId')) {
+            console.log($('.editCommentForm').attr('data-formId'));
+            $('.editCommentForm[data-formId='+ commentId +']').show()
+        } else {
+            $('.editCommentForm').hide
+        }
 
+    })
 });
