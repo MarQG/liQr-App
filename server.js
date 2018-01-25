@@ -36,7 +36,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     cookie: {
-        maxAge: 60000
+        maxAge: new Date(Date.now() + 3600000)
     }
 }));
 app.use(passport.initialize());
