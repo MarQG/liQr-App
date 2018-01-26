@@ -215,7 +215,7 @@ $('document').ready(function () {
                 }).then(function () {
                     setTimeout(function(){
                         location.reload();
-                    }, 500)
+                    }, 1000)
                    
                 })
             })
