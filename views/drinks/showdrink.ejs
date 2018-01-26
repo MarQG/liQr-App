@@ -1,10 +1,10 @@
 <% include ../partials/header.ejs %>
     <di class="ui container">
         <div class="ui grid center">
-            <div class="six wide column">
-                    <img src='<%= drink.image_link%>' alt="drink name" class="ui image medium">
+            <div class="six wide column imageDiv">
+                    <img src='<%= drink.image_link%>' alt="drink name" class="ui image centered medium">
             </div>
-            <div class="six wide column">
+            <div class="six wide column drinkInfo">
                     <h1 class="drinkName">
                         <%= drink.drink_name %>
                     </h1>
@@ -44,12 +44,12 @@
                         </div>
             </div>
             <div class="row">
-                <div class="column">
+                <div class="six wide column commentsColumn">
                         <div class="commentsDiv">
                                 <h2>Comments</h2>
                                 <% drink.comments.forEach(function(comment){ %>
                                     <div class="ui grid">
-                                        <div class="sixteen wide column">
+                                        <div class="sixteen wide column commentDiv">
                                                 <h4>
                                                     <%= comment.comment %>
                                                 </h4>

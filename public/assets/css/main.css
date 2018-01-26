@@ -2,14 +2,41 @@
     margin-top: 5vh;
 }
 body {
-/* background: url('https://www.iwantbeerrightnow.com/blog/wp-content/uploads/2016/05/DSCN0087.jpg') no-repeat fixed center;
+background: url('../img/tumblr_noennileRk1t0qqjbo1_1280.jpg') no-repeat fixed center;
 background-size: cover;
-} */
-.commentsDiv{
-    background: white;
-    opacity: 1;
-    padding: 10px;
-    border-radius: 25px;
-    width: 50%;
-    border: 2px solid goldenrod;
+
+}
+label{
+    color:white
+}
+.loginColumn{
+    background: whitesmoke;
+    border-radius: 5px;
+    border: 1px solid grey
+}
+.commentsColumn{
+    background: whitesmoke;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid grey
+}
+.commentDiv{
+    border-top: solid 1px black;
+    border-radius: 5px;
+}
+.drinkInfo {
+    background: whitesmoke;
+        border-right: 1px solid grey;
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+    
+}
+.imageDiv {
+    background: whitesmoke;
+    border-left: 1px solid grey;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+.header-text{
+    color: whitesmoke
 }
