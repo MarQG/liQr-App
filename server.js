@@ -32,7 +32,7 @@ app.set("view engine", "ejs");
 // ===== Passport ======
 
 app.use(session({
-    secret: "yolo swag",
+    secret: process.env.SECRET_KEY || "yolo swag",
     resave: true,
     saveUninitialized: true,
     cookie: {
