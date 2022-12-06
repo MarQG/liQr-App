@@ -11,11 +11,11 @@
     "license": "ISC",
     "dependencies": {
         "bcrypt-nodejs": "0.0.3",
-        "body-parser": "^1.17.2",
+        "body-parser": "^1.20.1",
         "connect-flash": "^0.1.1",
         "dotenv": "^4.0.0",
         "ejs": "^2.5.6",
-        "express": "^4.15.3",
+        "express": "^4.18.2",
         "express-session": "^1.15.6",
         "method-override": "^2.3.9",
         "mongoose": "^4.10.8",
